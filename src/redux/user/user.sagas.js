@@ -15,9 +15,25 @@ import {
     signUpFailure,
     signUpSuccess,
     emailSignInSuccess,
-    emailSignInFailure
+    emailSignInFailure,
+    signInSuccess,
+    signInFailure,
 } from "./user.actions";
 
+
+export function* getSnapshotFromUserAuth(userAuth, additionalData) {
+    try {
+        const userRef = yield call(
+            createUserProfileDocument,
+            userAuth,
+            additionalData
+        );
+        const userSnapshot = yield userRef.get();
+        yield put(emailSignInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+    } catch (error) {
+        yield put(emailSignInFailure(error));
+    }
+}
 
 export function* signInWithGoogle() {
 
@@ -44,13 +60,12 @@ export function* onGoogleSignInStart() {
 
 }
 
-export function* signInWithEmail(emailAndPassword) {
-
+export function* signInWithEmail({ payload: { email, password } }) {
     try {
-        yield console.log("Just to see");
-        //const { user } = yield auth.signInWithEmailAndPassword(emailAndPassword);
+        const { user } = yield auth.signInWithEmailAndPassword(email, password);
+        yield getSnapshotFromUserAuth(user);
     } catch (error) {
-
+        yield put(emailSignInFailure(error));
     }
 }
 

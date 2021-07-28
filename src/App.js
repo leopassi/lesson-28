@@ -43,8 +43,12 @@ class App extends React.Component {
         // });
     }
 
+    // Implicitemnet: componentWillUnmount sait qu'il va "désactiver" ce qui est appelé en son sein
     componentWillUnmount() {
         this.unsubscribeFromAuth();
+        // console.log('Celui de fin =' + this.unsubscribeFromAuth());
+        // console.log('Celui de fin =' + this.unsubscribeFromAuth());
+
     }
 
     render() {
