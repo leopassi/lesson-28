@@ -1,98 +1,114 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import './App.css';
+import { GlobalStyles } from './global.styles';
 
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import CheckoutPage from './pages/checkout/checkout.component';
+// import HomePage from './pages/homepage/homepage.component';
+// import ShopPage from './pages/shop/shop.component';
+
+// import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+// import CheckoutPage from './pages/checkout/checkout.component';
 
 import Header from './components/header/header.component';
-
-// import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import Spinner from './components/spinner/spinner.component';
 
 import { checkUserSessionStart } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import ErrorBoundary from './components/error-boundary/error-boundary.components';
+
+const HomePage = lazy(() => import ('./pages/homepage/homepage.component'));
+const ShopPage = lazy(() => import ('./pages/shop/shop.component'));
+const SignInAndSignUpPage = lazy(() => import ('./pages/sign-in-and-sign-up/sign-in-and-sign-up.component'));
+const CheckoutPage = lazy(() => import ('./pages/checkout/checkout.component'));
+// const Header = lazy(() => import ('./components/header/header.component'));
+
+// const renderLoader = () => <p>Loading</p>;
+
+
 
 class App extends React.Component {
-    unsubscribeFromAuth = null;
 
-    componentDidMount() {
-        const { checkUserSessionStart } = this.props;
-        checkUserSessionStart();
+        unsubscribeFromAuth = null;
 
-        // const { setCurrentUser } = this.props;
+        componentDidMount() {
+            const { checkUserSessionStart } = this.props;
+            checkUserSessionStart();
 
-        // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-        //   if (userAuth) {
-        //     const userRef = await createUserProfileDocument(userAuth);
+            // const { setCurrentUser } = this.props;
 
-        //     userRef.onSnapshot(snapShot => {
-        //       setCurrentUser({
-        //         id: snapShot.id,
-        //         ...snapShot.data()
-        //       });
-        //     });
-        //   }
+            // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            //   if (userAuth) {
+            //     const userRef = await createUserProfileDocument(userAuth);
 
-        //   // else "implicite" ????
-        //   setCurrentUser(userAuth);
-        // });
-    }
+            //     userRef.onSnapshot(snapShot => {
+            //       setCurrentUser({
+            //         id: snapShot.id,
+            //         ...snapShot.data()
+            //       });
+            //     });
+            //   }
 
-    // Implicitemnet: componentWillUnmount sait qu'il va "désactiver" ce qui est appelé en son sein
-    componentWillUnmount() {
-        this.unsubscribeFromAuth();
-        // console.log('Celui de fin =' + this.unsubscribeFromAuth());
-        // console.log('Celui de fin =' + this.unsubscribeFromAuth());
+            //   // else "implicite" ????
+            //   setCurrentUser(userAuth);
+            // });
+        }
 
-    }
+        // Implicitemnet: componentWillUnmount sait qu'il va "désactiver" ce qui est appelé en son sein
+        componentWillUnmount() {
+            this.unsubscribeFromAuth(); // = null; // Correction PERSO ??
+            // console.log('Celui de fin =' + this.unsubscribeFromAuth());
+            // console.log('Celui de fin =' + this.unsubscribeFromAuth());
 
-    render() {
-        return ( <
-            div >
-            <
-            Header / >
-            <
-            Switch >
-            <
-            Route exact path = '/'
-            component = { HomePage }
-            /> <
-            Route path = '/shop'
-            component = { ShopPage }
-            /> <
-            Route exact path = '/checkout'
-            component = { CheckoutPage }
-            /> <
-            Route exact path = '/signin'
-            render = {
-                () =>
-                this.props.currentUser ? ( <
-                    Redirect to = '/' / >
-                ) : ( <
-                    SignInAndSignUpPage / >
-                )
+        }
+
+        render() {
+            return ( 
+                <div>
+                <GlobalStyles />
+                <Header />
+                <Switch > 
+                    <ErrorBoundary> 
+                        <Suspense fallback = { <Spinner /> } >   
+                            <Route exact path ='/' component = { HomePage } />    
+                        
+                                {/* <Route exact path ='/' component = { HomePage } />    
+                    */}
+
+                            <Route path = '/shop'
+                            component = { ShopPage }
+                            />   
+                            <Route exact path = '/checkout'
+                            component = { CheckoutPage }
+                            /> 
+                            <Route exact path = '/signin'
+                            render = {
+                                () =>
+                                this.props.currentUser ? ( <
+                                    Redirect to = '/' />
+                                ) : ( <
+                                    SignInAndSignUpPage />
+                                )
+                            }
+                            />
+                        </Suspense >
+                     </ErrorBoundary>
+                </Switch >   
+                </div>
+                );
             }
-            /> < /
-            Switch > <
-            /div>
-        );
-    }
-}
+        }
 
-const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser
-});
+        const mapStateToProps = createStructuredSelector({
+            currentUser: selectCurrentUser
+        });
 
-const mapDispatchToProps = dispatch => ({
-    checkUserSessionStart: () => dispatch(checkUserSessionStart())
-});
+        const mapDispatchToProps = dispatch => ({
+            checkUserSessionStart: () => dispatch(checkUserSessionStart())
+        });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App);
+        export default connect(
+            mapStateToProps,
+            mapDispatchToProps
+        )(App);

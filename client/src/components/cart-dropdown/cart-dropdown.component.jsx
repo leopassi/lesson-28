@@ -14,6 +14,8 @@ import {
   CartItemsContainer
 } from './cart-dropdown.styles';
 
+// RAPPEL: En présence de MapStateToProps, le "dispatch" fait partie des
+// props du Compsant !!! D'où le paramètre ci-dessous
 const CartDropdown = ({ cartItems, history, dispatch }) => (
   <CartDropdownContainer>
     <CartItemsContainer>
