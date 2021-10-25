@@ -73,8 +73,6 @@ class App extends React.Component {
                         <Suspense fallback = { <Spinner /> } >   
                             <Route exact path ='/' component = { HomePage } />    
                         
-                                {/* <Route exact path ='/' component = { HomePage } />    
-                    */}
 
                             <Route path = '/shop'
                             component = { ShopPage }
