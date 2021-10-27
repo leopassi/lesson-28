@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+// Fournit la compression absente sur Heroku
 const compression = require('compression');
+// Force le redirection de toute requête http en HTTPS
+const enforce = require('express-sslify');
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -13,6 +16,8 @@ const port = process.env.PORT || 5000;
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// trustProtoHeader: sert à repérer les requêtes http cryptées sur Heroku
+app.use(enforce.HTTPS({trustProtoHeader: true}));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(enforce.HTTPS({ trustProtoHeader: true }));
@@ -26,6 +31,10 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(port, error => {
     if (error) throw error;
     console.log('Server running on port ' + port);
+});
+
+app.get('/service-worker.js', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
 });
 
 app.post('/payment', (req, res) => {
