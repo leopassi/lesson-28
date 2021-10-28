@@ -24,7 +24,8 @@
         {
             "src": "safari-pinned-tab.svg",
             "type": "image/svg",
-            "color": "#5bbad5"
+            "color": "#5bbad5",
+            "purpose": "any maskable"
         }
     ],
     "start_url": ".",
