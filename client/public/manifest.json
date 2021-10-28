@@ -23,7 +23,8 @@
         },
         {
             "src": "safari-pinned-tab.svg",
-            "type": "image/svg"
+            "type": "image/svg",
+            "color": "#5bbad5"
         }
     ],
     "start_url": ".",
