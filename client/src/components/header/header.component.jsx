@@ -16,7 +16,8 @@ import {
   HeaderContainer,
   LogoContainer,
   OptionsContainer,
-  OptionLink
+  OptionLink,
+ WelcomeContainer
 } from './header.styles';
 
 const Header = ({ currentUser, hidden, signOutStart }) => (
@@ -24,6 +25,9 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
     <LogoContainer to='/'>
       <Logo className='logo' />
     </LogoContainer>
+      {currentUser ?  (<WelcomeContainer>Welcome on board {currentUser.displayName} !</WelcomeContainer>)
+      : null}
+    
     <OptionsContainer>
       <OptionLink to='/shop'>SHOP</OptionLink>
       <OptionLink to='/shop'>CONTACT</OptionLink>
@@ -34,6 +38,9 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
       ) : (
         <OptionLink to='/signin'>SIGN IN</OptionLink>
       )}
+      {console.log(currentUser)}
+      {currentUser ? console.log('Nom User = ' + currentUser.displayName): console.log('NoUser')
+      }
       <CartIcon />
     </OptionsContainer>
     {hidden ? null : <CartDropdown />}
