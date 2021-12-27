@@ -1,12 +1,16 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { paymentSuccess } from '../../redux/user/user.actions';
 
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 
-const StripeCheckoutButton = ({ price }) => {
+const StripeCheckoutButton = ({ price, paymentSuccess }) => {
   const priceForStripe = price * 100;
   const publishableKey = 'pk_test_51ImNkcDou15m3Tay8iZocKb7v627txDgAoKFjyc0YR5rQt0agPMo5aXp7kPt6KUGmOrIUTVoIbPlyFuHyTbBARnT00iMpM30vQ';
+
+  const payment = () => paymentSuccess();
 
   const onToken = token => {
 
@@ -17,21 +21,23 @@ const StripeCheckoutButton = ({ price }) => {
         amount: priceForStripe,
         token
       }
-    }).then(response => { alert('Payment Succesful!');} )
+    }).then(response => { alert('Payment Succesful!'); 
+      payment(); })
       .catch(error => {
-        console.log('There aws an issue with th Payment' + JSON.parse(error));
+        console.log('There was an issue with th Payment' + JSON.parse(error));
         alert('There was an error. Make sure to use the provided Credit Card');
       });
 
 
-    // console.log(token);
+    // console.log(paymentSuccess());
     // alert('Payment Succesful!');
+    // payment();
   };
 
   return (
     <StripeCheckout
       label='Pay Now'
-      name='CRWN Clothing Ltd.'
+      name='LEO Discount Ltd.'
       billingAddress
       shippingAddress
       image='https://svgshare.com/i/CUz.svg'
@@ -44,4 +50,8 @@ const StripeCheckoutButton = ({ price }) => {
   );
 };
 
-export default StripeCheckoutButton;
+const mapDispatchToProps = dispatch => ({
+  paymentSuccess: () => dispatch(paymentSuccess())
+});
+
+export default connect(null, mapDispatchToProps)(StripeCheckoutButton);
