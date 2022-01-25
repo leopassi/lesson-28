@@ -21,8 +21,9 @@ const StripeCheckoutButton = ({ price, paymentSuccess }) => {
         amount: priceForStripe,
         token
       }
-    }).then(response => { alert('Payment Succesful!'); 
-      payment(); })
+    }).then(response => { payment();
+      alert('Payment Succesful !'); 
+    })
       .catch(error => {
         console.log('There was an issue with th Payment' + JSON.parse(error));
         alert('There was an error. Make sure to use the provided Credit Card');
@@ -30,8 +31,8 @@ const StripeCheckoutButton = ({ price, paymentSuccess }) => {
 
 
     // console.log(paymentSuccess());
+    // await payment();
     // alert('Payment Succesful!');
-    // payment();
   };
 
   return (

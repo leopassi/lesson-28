@@ -1,4 +1,4 @@
-import { all, call, takeLatest, put } from "redux-saga/effects";
+import { all, call, takeLatest, put, takeEvery } from "redux-saga/effects";
 
 import UserActionTypes from "../user/user.types";
 
@@ -16,7 +16,7 @@ export function* onSignOutSuccess() {
 
 export function* onPaymentSuccess() {
 
-    yield takeLatest(UserActionTypes.PAYMENT_SUCCESS, clearCartOnSignOut); // On réutilise ce clear, car il existe déjà
+    yield takeEvery(UserActionTypes.PAYMENT_SUCCESS, clearCartOnSignOut); // On réutilise ce clear, car il existe déjà
 }
 
 export function* cartSagas() {
