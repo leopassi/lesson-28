@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
+// Mise en place du local storage. Restriction: Clear à chaque Déconnexion
 import storage from 'redux-persist/lib/storage';
 
 import userReducer from './user/user.reducer';

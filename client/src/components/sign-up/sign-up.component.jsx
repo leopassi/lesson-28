@@ -8,6 +8,9 @@ import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 import {signUpStart} from '../../redux/user/user.actions';
+import { Trans, withTranslation } from 'react-i18next';
+
+
 
 class SignUp extends React.Component {
   constructor() {
@@ -25,12 +28,15 @@ class SignUp extends React.Component {
     event.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
-    const { signUpStart } = this.props;
+    const { signUpStart, t } = this.props;
 
     if (password !== confirmPassword) {
-      alert("passwords don't match");
+      alert(`${t('passwords match')}`);
       return;
     }
+
+    // CONTROLE DE VALIDITE DU MAIL A FAIRE !!!
+    // ====> UTILISATION DE YUP ???
 
     //// APPEL DE L'ACTION COTE SAGA ICI; AVEC ASYNC AWAIT ???
       const userCredentials = {email: email, password: password, displayName: displayName};
@@ -50,17 +56,27 @@ class SignUp extends React.Component {
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
+    const { t } = this.props;
+
     return (
       <SignUpContainer>
-        <SignUpTitle>I do not have a account</SignUpTitle>
-        <span>Sign up with your email and password</span>
+        <SignUpTitle>
+          <Trans i18nKey="I do not have a account">
+            I do not have a account
+          </Trans>
+        </SignUpTitle>
+        <span>
+          <Trans i18nKey="Sign up with your email and password">
+          Sign up with your email and password
+          </Trans>
+        </span>
         <form className='sign-up-form' onSubmit={this.handleSubmit}>
           <FormInput
             type='text'
             name='displayName'
             value={displayName}
             onChange={this.handleChange}
-            label='Display Name'
+            label={t('Display Name')}
             required
           />
           <FormInput
@@ -76,7 +92,7 @@ class SignUp extends React.Component {
             name='password'
             value={password}
             onChange={this.handleChange}
-            label='Password'
+            label={t('Password')}
             required
           />
           <FormInput
@@ -84,10 +100,14 @@ class SignUp extends React.Component {
             name='confirmPassword'
             value={confirmPassword}
             onChange={this.handleChange}
-            label='Confirm Password'
+            label={t('Confirm Password')}
             required
           />
-          <CustomButton type='submit'>SIGN UP</CustomButton>
+          <CustomButton type='submit'>
+            <Trans i18nKey="SIGN UP">
+              SIGN UP
+            </Trans>  
+          </CustomButton>
         </form>
       </SignUpContainer>
     );
@@ -98,4 +118,4 @@ const mapDispatchToProps = dispatch => ({
   signUpStart: (email, password, displayName) => dispatch(signUpStart(email, password, displayName))
 });
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default withTranslation() (connect(null, mapDispatchToProps)(SignUp));

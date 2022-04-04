@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { addItem } from '../../redux/cart/cart.actions';
+import { useTranslation } from 'react-i18next';
 
 import {
   CollectionItemContainer,
@@ -14,16 +15,17 @@ import {
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
+  const { t } = useTranslation();
 
   return (
     <CollectionItemContainer>
       <BackgroundImage className='image' imageUrl={imageUrl} />
       <CollectionFooterContainer>
-        <NameContainer>{name}</NameContainer>
+        <NameContainer>{t(`${name}`)}</NameContainer>
         <PriceContainer>{price}</PriceContainer>
       </CollectionFooterContainer>
       <AddButton onClick={() => addItem(item)} inverted>
-        Add to cart
+        {t('Add to cart')}
       </AddButton>
     </CollectionItemContainer>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import CollectionItem from '../collection-item/collection-item.component';
+import { useTranslation } from 'react-i18next';
 
 import {
   CollectionPreviewContainer,
@@ -9,10 +10,13 @@ import {
   PreviewContainer
 } from './collection-preview.styles';
 
-const CollectionPreview = ({ title, items, history, match, routeName }) => (
+const CollectionPreview = ({ title, items, history, match, routeName }) => {
+
+  const { t } = useTranslation();
+  return (
   <CollectionPreviewContainer>
     <TitleContainer onClick={() => history.push(`${match.path}/${routeName}`)}>
-      {title.toUpperCase()}
+      {t(`${title.toUpperCase()}`)}
     </TitleContainer>
     <PreviewContainer>
       {items
@@ -23,5 +27,6 @@ const CollectionPreview = ({ title, items, history, match, routeName }) => (
     </PreviewContainer>
   </CollectionPreviewContainer>
 );
+}
 
 export default withRouter(CollectionPreview);

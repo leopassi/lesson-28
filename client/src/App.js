@@ -67,10 +67,13 @@ class App extends React.Component {
             return ( 
                 <div>
                 <GlobalStyles />
+                <ErrorBoundary> 
+                <Suspense fallback = { <Spinner /> } >   
+
                 <Header />
                 <Switch > 
-                    <ErrorBoundary> 
-                        <Suspense fallback = { <Spinner /> } >   
+                    {/* <ErrorBoundary> 
+                        <Suspense fallback = { <Spinner /> } >    */}
                             <Route exact path ='/' component = { HomePage } />    
                         
 
@@ -90,9 +93,12 @@ class App extends React.Component {
                                 )
                             }
                             />
-                        </Suspense >
-                     </ErrorBoundary>
-                </Switch >   
+                        {/* </Suspense >
+                     </ErrorBoundary> */}
+                </Switch >
+                </Suspense >
+                </ErrorBoundary>
+
                 </div>
                 );
             }

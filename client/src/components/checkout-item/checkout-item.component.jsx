@@ -7,6 +7,8 @@ import {
   removeItem
 } from '../../redux/cart/cart.actions';
 
+import { useTranslation } from 'react-i18next';
+
 import {
   CheckoutItemContainer,
   ImageContainer,
@@ -17,12 +19,14 @@ import {
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
+  const { t } = useTranslation();
+
   return (
     <CheckoutItemContainer>
       <ImageContainer>
         <img src={imageUrl} alt='item' />
       </ImageContainer>
-      <TextContainer>{name}</TextContainer>
+      <TextContainer>{t(`${name}`)}</TextContainer>
       <QuantityContainer>
         <div onClick={() => removeItem(cartItem)}>&#10094;</div>
         <span>{quantity}</span>

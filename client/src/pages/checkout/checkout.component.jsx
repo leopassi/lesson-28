@@ -10,6 +10,8 @@ import {
   selectCartTotal
 } from '../../redux/cart/cart.selectors';
 
+import { useTranslation } from 'react-i18next';
+
 import {
   CheckoutPageContainer,
   CheckoutHeaderContainer,
@@ -18,23 +20,25 @@ import {
   WarningContainer
 } from './checkout.styles';
 
-const CheckoutPage = ({ cartItems, total }) => (
+const CheckoutPage = ({ cartItems, total }) => {
+  const { t } = useTranslation();
+  return (
   <CheckoutPageContainer>
     <CheckoutHeaderContainer>
       <HeaderBlockContainer>
-        <span>Product</span>
+        <span>{t('Product')}</span>
       </HeaderBlockContainer>
       <HeaderBlockContainer>
         <span>Description</span>
       </HeaderBlockContainer>
       <HeaderBlockContainer>
-        <span>Quantity</span>
+        <span>{t('Quantity')}</span>
       </HeaderBlockContainer>
       <HeaderBlockContainer>
-        <span>Price</span>
+        <span>{t('Price')}</span>
       </HeaderBlockContainer>
       <HeaderBlockContainer>
-        <span>Remove</span>
+        <span>{t('Remove')}</span>
       </HeaderBlockContainer>
     </CheckoutHeaderContainer>
     {cartItems.map(cartItem => (
@@ -42,13 +46,13 @@ const CheckoutPage = ({ cartItems, total }) => (
     ))}
     <TotalContainer>TOTAL: ${total}</TotalContainer>
     <WarningContainer>
-      *Please use the following test credit card for payments*
+      {t('Warn')}
       <br />
       4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
     </WarningContainer>
     <StripeCheckoutButton price={total} />
   </CheckoutPageContainer>
-);
+);}
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,

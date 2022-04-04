@@ -18,4 +18,5 @@ const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
   </CartItemContainer>
 );
 
+// RQ: La Prop "item" ne vient pas d'un calcul Redux ici ==> Utilisation de Reselect impossible !!
 export default React.memo(CartItem);

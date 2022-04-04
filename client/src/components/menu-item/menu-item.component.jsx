@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import {
   MenuItemContainer,
@@ -9,7 +10,10 @@ import {
   ContentSubtitle
 } from './menu-item.styles';
 
-const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
+const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
+  const { t } = useTranslation();
+
+  return (
   <MenuItemContainer
     size={size}
     onClick={() => history.push(`${match.url}${linkUrl}`)}
@@ -19,10 +23,11 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
       imageUrl={imageUrl}
     />
     <ContentContainer className='content'>
-      <ContentTitle>{title.toUpperCase()}</ContentTitle>
-      <ContentSubtitle>SHOP NOW</ContentSubtitle>
+      <ContentTitle>{t(`${title.toUpperCase()}`)}</ContentTitle>
+      <ContentSubtitle>{t('shopNow')}</ContentSubtitle>
     </ContentContainer>
   </MenuItemContainer>
 );
+}
 
 export default withRouter(MenuItem);

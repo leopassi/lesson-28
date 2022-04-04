@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
 import { selectCollection } from '../../redux/shop/shop.selectors';
+import { useTranslation } from 'react-i18next';
 
 import {
   CollectionPageContainer,
@@ -13,9 +14,11 @@ import {
 
 const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
+  const { t } = useTranslation();
+
   return (
     <CollectionPageContainer>
-      <CollectionTitle>{title}</CollectionTitle>
+      <CollectionTitle>{t(`${title}`)}</CollectionTitle>
       <CollectionItemsContainer>
         {items.map(item => (
           <CollectionItem key={item.id} item={item} />

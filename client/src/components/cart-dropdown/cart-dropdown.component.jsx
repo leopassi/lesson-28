@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { toggleCartHidden } from '../../redux/cart/cart.actions.js';
+import { useTranslation } from 'react-i18next';
 
 import {
   CartDropdownContainer,
@@ -15,8 +16,11 @@ import {
 } from './cart-dropdown.styles';
 
 // RAPPEL: En présence de MapStateToProps, le "dispatch" fait partie des
-// props du Compsant !!! D'où le paramètre ci-dessous
-const CartDropdown = ({ cartItems, history, dispatch }) => (
+// props du Compsant. Ce qui donne l'accès aux actions !!! D'où le paramètre ci-dessous
+const CartDropdown = ({ cartItems, history, dispatch }) => {
+  
+  const { t } = useTranslation();
+  return (
   <CartDropdownContainer>
     <CartItemsContainer>
       {cartItems.length ? (
@@ -24,7 +28,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
           <CartItem key={cartItem.id} item={cartItem} />
         ))
       ) : (
-        <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
+        <EmptyMessageContainer>{t('emptyCart')}</EmptyMessageContainer>
       )}
     </CartItemsContainer>
     <CartDropdownButton
@@ -33,10 +37,11 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
         dispatch(toggleCartHidden());
       }}
     >
-      GO TO CHECKOUT
+      {t('GO TO CHECKOUT')}
     </CartDropdownButton>
   </CartDropdownContainer>
-);
+  )
+}
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems

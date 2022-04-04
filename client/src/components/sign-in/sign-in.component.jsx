@@ -7,6 +7,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import { auth /* signInWithGoogle */ } from '../../firebase/firebase.utils';
 
 import { googleSignInStart, emailSignInStart} from '../../redux/user/user.actions';
+import { useTranslation } from 'react-i18next';
 
 import {
   SignInContainer,
@@ -50,12 +51,14 @@ const SignIn = ({ googleSignInStart, emailSignInStart}) => {
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
+  const { t } = useTranslation();
+
     //const { googleSignInStart} = this.props;
 
     return (
       <SignInContainer>
-        <SignInTitle>I already have an account</SignInTitle>
-        <span>Sign in with your email and password</span>
+        <SignInTitle>{t('I already have an account')}</SignInTitle>
+        <span>{t('Sign in with your email and password')}</span>
 
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -71,13 +74,13 @@ const SignIn = ({ googleSignInStart, emailSignInStart}) => {
             type='password'
             value={password}
             handleChange={handleChange}
-            label='password'
+            label={t('password')}
             required
           />
           <ButtonsBarContainer>
-            <CustomButton type='submit'> Sign in </CustomButton>
+            <CustomButton type='submit'> {t('Sign in')} </CustomButton>
             <CustomButton type='button' onClick={googleSignInStart} isGoogleSignIn>
-              Sign in with Google
+              {t('Sign in with Google')}
             </CustomButton>
           </ButtonsBarContainer>
         </form>
