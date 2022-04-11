@@ -2,8 +2,8 @@
     "name": "leo-discount-server",
     "version": "1.0.0",
     "engines": {
-        "node": "16.x",
-        "npm": "8.3.1"
+        "node": "12.13.0",
+        "npm": "6.12.0"
     },
     "scripts": {
         "client": "cd client && yarn start",
@@ -20,6 +20,7 @@
         "dotenv": "7.0.0",
         "express": "^4.16.4",
         "express-sslify": "^1.2.0",
+        "react": "17.0.0",
         "stripe": "6.28.0"
     },
     "devDependencies": {
