@@ -12,6 +12,10 @@ export const selectCartHidden = createSelector(
   cart => cart.hidden
 );
 
+/** REMARQUE: Quand je calcule un scalaire avec Reduce(), je mets directement
+ *  le résultat dans l'image de la fonction en 1er argument, pour éviter de
+ *  devoir écrire un return !!!!!
+ */
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
   cartItems =>

@@ -29,6 +29,7 @@ const CollectionPage = ({ collection }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
+  // On utilise le CURRYING sur selectCollection ci-dessous
   collection: selectCollection(ownProps.match.params.collectionId)(state)
 });
 

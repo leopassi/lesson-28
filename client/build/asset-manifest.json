@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e68942c9.chunk.css",
+    "main.js": "/static/js/main.3ea9a879.chunk.js",
+    "main.js.map": "/static/js/main.3ea9a879.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d7494e2e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d7494e2e.js.map",
+    "static/js/2.5b8dccd9.chunk.js": "/static/js/2.5b8dccd9.chunk.js",
+    "static/js/2.5b8dccd9.chunk.js.map": "/static/js/2.5b8dccd9.chunk.js.map",
+    "static/js/3.ee6fe45d.chunk.js": "/static/js/3.ee6fe45d.chunk.js",
+    "static/js/3.ee6fe45d.chunk.js.map": "/static/js/3.ee6fe45d.chunk.js.map",
+    "static/js/4.229029c8.chunk.js": "/static/js/4.229029c8.chunk.js",
+    "static/js/4.229029c8.chunk.js.map": "/static/js/4.229029c8.chunk.js.map",
+    "static/js/5.e52edfad.chunk.js": "/static/js/5.e52edfad.chunk.js",
+    "static/js/5.e52edfad.chunk.js.map": "/static/js/5.e52edfad.chunk.js.map",
+    "static/js/6.3117eaf3.chunk.js": "/static/js/6.3117eaf3.chunk.js",
+    "static/js/6.3117eaf3.chunk.js.map": "/static/js/6.3117eaf3.chunk.js.map",
+    "static/js/7.bdfabb59.chunk.js": "/static/js/7.bdfabb59.chunk.js",
+    "static/js/7.bdfabb59.chunk.js.map": "/static/js/7.bdfabb59.chunk.js.map",
+    "static/js/8.b93b7035.chunk.js": "/static/js/8.b93b7035.chunk.js",
+    "static/js/8.b93b7035.chunk.js.map": "/static/js/8.b93b7035.chunk.js.map",
+    "static/js/9.3140bc92.chunk.js": "/static/js/9.3140bc92.chunk.js",
+    "static/js/9.3140bc92.chunk.js.map": "/static/js/9.3140bc92.chunk.js.map",
+    "index.html": "/index.html",
+    "service-worker.js": "/service-worker.js",
+    "service-worker.js.map": "/service-worker.js.map",
+    "static/css/main.e68942c9.chunk.css.map": "/static/css/main.e68942c9.chunk.css.map",
+    "static/js/2.5b8dccd9.chunk.js.LICENSE.txt": "/static/js/2.5b8dccd9.chunk.js.LICENSE.txt",
+    "static/media/crown.207ae289.svg": "/static/media/crown.207ae289.svg",
+    "static/media/getFetch.cjs": "/static/media/getFetch.582d29c4.cjs",
+    "static/media/language_icon.7569f758.svg": "/static/media/language_icon.7569f758.svg",
+    "static/media/shopping-bag.a688874f.svg": "/static/media/shopping-bag.a688874f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d7494e2e.js",
+    "static/js/2.5b8dccd9.chunk.js",
+    "static/css/main.e68942c9.chunk.css",
+    "static/js/main.3ea9a879.chunk.js"
+  ]
+}

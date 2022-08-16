@@ -48,6 +48,8 @@ const SignIn = ({ googleSignInStart, emailSignInStart}) => {
   const handleChange = event => {
     const { value, name } = event.target;
 
+    // HOOK STATE avec 2 propriétés ==> Update avec Spread Operator !!
+    // Mais on peut aussi créer 2 HOOK STATE séparés; et faire un Update habituel.
     setUserCredentials({ ...userCredentials, [name]: value });
   };
 
