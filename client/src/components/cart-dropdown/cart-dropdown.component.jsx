@@ -18,28 +18,29 @@ import {
 // RAPPEL: En présence de MapStateToProps, le "dispatch" fait partie des
 // props du Compsant. Ce qui donne l'accès aux actions !!! D'où le paramètre ci-dessous
 const CartDropdown = ({ cartItems, history, dispatch }) => {
-  
   const { t } = useTranslation();
   return (
-  <CartDropdownContainer>
-    <CartItemsContainer>
-      {cartItems.length ? (
-        cartItems.map(cartItem => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))
-      ) : (
-        <EmptyMessageContainer>{t('emptyCart')}</EmptyMessageContainer>
-      )}
-    </CartItemsContainer>
-    <CartDropdownButton
-      onClick={() => {
-        history.push('/checkout');
-        dispatch(toggleCartHidden());
-      }}
-    >
-      {t('GO TO CHECKOUT')}
-    </CartDropdownButton>
-  </CartDropdownContainer>
+    <CartDropdownContainer>
+      <CartItemsContainer>
+        {cartItems.length
+          ? (
+              cartItems.map(cartItem => (
+                <CartItem key={cartItem.id} item={cartItem} />
+              ))
+            )
+          : (
+            <EmptyMessageContainer>{t('emptyCart')}</EmptyMessageContainer>
+            )}
+      </CartItemsContainer>
+      <CartDropdownButton
+        onClick={() => {
+          history.push('/checkout');
+          dispatch(toggleCartHidden());
+        }}
+      >
+        {t('GO TO CHECKOUT')}
+      </CartDropdownButton>
+    </CartDropdownContainer>
   )
 }
 
