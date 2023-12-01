@@ -70,7 +70,7 @@ const Header = ({ currentUser, hidden, signOutStart }) => {
       </div> */}
 
         <OptionLink to='/shop'>{t('shop')}</OptionLink>
-        <OptionLink to='/shop'>CONTACT</OptionLink>
+        {/* <OptionLink to='/shop'>CONTACT</OptionLink> */}
         {currentUser ? (
           <OptionLink as='div' onClick={() => signOutStart()}>
             {t('signOut')}
