@@ -15,6 +15,9 @@ export const CartContainer = styled.div`
 export const ShoppingIcon = styled(ShoppingIconSVG)`
   width: 40px;
   height: 40px;
+  @media screen and (max-width: 800px) {
+    width: 35px;
+  }
 `;
 
 export const ItemCountContainer = styled.span`
