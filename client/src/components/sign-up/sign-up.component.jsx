@@ -6,7 +6,11 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
-import { SignUpContainer, SignUpTitle } from './sign-up.styles';
+import {
+  SignUpContainer,
+  SignUpTitle,
+  SignUpButtonContainer,
+} from "./sign-up.styles";
 import {signUpStart} from '../../redux/user/user.actions';
 import { Trans, withTranslation } from 'react-i18next';
 
@@ -67,47 +71,47 @@ class SignUp extends React.Component {
         </SignUpTitle>
         <span>
           <Trans i18nKey="Sign up with your email and password">
-          Sign up with your email and password
+            Sign up with your email and password
           </Trans>
         </span>
-        <form className='sign-up-form' onSubmit={this.handleSubmit}>
+        <form className="sign-up-form" onSubmit={this.handleSubmit}>
           <FormInput
-            type='text'
-            name='displayName'
+            type="text"
+            name="displayName"
             value={displayName}
             onChange={this.handleChange}
-            label={t('Display Name')}
+            label={t("Display Name")}
             required
           />
           <FormInput
-            type='email'
-            name='email'
+            type="email"
+            name="email"
             value={email}
             onChange={this.handleChange}
-            label='Email'
+            label="Email"
             required
           />
           <FormInput
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             value={password}
             onChange={this.handleChange}
-            label={t('Password')}
+            label={t("Password")}
             required
           />
           <FormInput
-            type='password'
-            name='confirmPassword'
+            type="password"
+            name="confirmPassword"
             value={confirmPassword}
             onChange={this.handleChange}
-            label={t('Confirm Password')}
+            label={t("Confirm Password")}
             required
           />
-          <CustomButton type='submit'>
-            <Trans i18nKey="SIGN UP">
-              SIGN UP
-            </Trans>  
-          </CustomButton>
+          <SignUpButtonContainer>
+            <CustomButton type="submit">
+              <Trans i18nKey="SIGN UP">SIGN UP</Trans>
+            </CustomButton>
+          </SignUpButtonContainer>
         </form>
       </SignUpContainer>
     );

@@ -43,7 +43,7 @@ const getButtonStyles = props => {
 };
 
 export const CustomButtonContainer = styled.button`
-  min-width: 165px;
+  min-width: 150px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
@@ -51,11 +51,13 @@ export const CustomButtonContainer = styled.button`
   padding: 0 35px 0 35px;
   font-size: 15px;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
+  font-family: "Open Sans Condensed";
   font-weight: bolder;
   cursor: pointer;
   display: flex;
   justify-content: center;
-
-  ${getButtonStyles}
+  ${getButtonStyles};
+  @media screen and (max-width: 800px) {
+    padding: 0 3px 0 3px;
+  }
 `;
