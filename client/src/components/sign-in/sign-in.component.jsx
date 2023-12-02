@@ -81,7 +81,11 @@ const SignIn = ({ googleSignInStart, emailSignInStart}) => {
           />
           <ButtonsBarContainer>
             <CustomButton type='submit'> {t('Sign in')} </CustomButton>
-            <CustomButton type='button' onClick={googleSignInStart} isGoogleSignIn>
+            <CustomButton
+              type='button'
+              onClick={googleSignInStart}
+              isGoogleSignIn
+            >
               {t('Sign in with Google')}
             </CustomButton>
           </ButtonsBarContainer>
