@@ -1974,6 +1974,14 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
+"@types/bytebuffer@^5.0.40":
+  version "5.0.49"
+  resolved "https://registry.yarnpkg.com/@types/bytebuffer/-/bytebuffer-5.0.49.tgz#04cb63de6c83ae2b6f33f397d2503c079bfc321a"
+  integrity sha512-lV4YLiolMdD4upDmr4vnfiwV/FN9Jg33eNTSFMkHqyMKqTIAn5TmFTYsARwXwUXeFU7yzRpECmWV1SOhIvdkRQ==
+  dependencies:
+    "@types/long" "^3.0.0"
+    "@types/node" "*"
+
 "@types/eslint@^7.29.0":
   version "7.29.0"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.29.0.tgz#e56ddc8e542815272720bb0b4ccc2aff9c3e1c78"
@@ -2040,6 +2048,11 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
+
+"@types/long@^3.0.0":
+  version "3.0.32"
+  resolved "https://registry.yarnpkg.com/@types/long/-/long-3.0.32.tgz#f4e5af31e9e9b196d8e5fca8a5e2e20aa3d60b69"
+  integrity sha512-ZXyOOm83p7X8p3s0IYM3VeueNmHpkk/yMlP8CLeOnEcu6hIwPH7YjZBvhQkR0ZFS2DqZAxKtJ/M5fcuv3OU5BA==
 
 "@types/long@^4.0.1":
   version "4.0.2"
@@ -6423,6 +6436,18 @@ grpc@1.20.3:
     node-pre-gyp "^0.13.0"
     protobufjs "^5.0.3"
 
+grpc@1.24.3:
+  version "1.24.3"
+  resolved "https://registry.yarnpkg.com/grpc/-/grpc-1.24.3.tgz#92efe28dfc1250dca179b8133e40b4f2341473d9"
+  integrity sha512-EDemzuZTfhM0hgrXqC4PtR76O3t+hTIYJYR5vgiW0yt2WJqo4mhxUqZUirzUQz34Psz7dbLp38C6Cl7Ij2vXRQ==
+  dependencies:
+    "@types/bytebuffer" "^5.0.40"
+    lodash.camelcase "^4.3.0"
+    lodash.clone "^4.5.0"
+    nan "^2.13.2"
+    node-pre-gyp "^0.15.0"
+    protobufjs "^5.0.3"
+
 gud@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
@@ -8894,7 +8919,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-needle@^2.2.1:
+needle@^2.2.1, needle@^2.5.0:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.9.1.tgz#22d1dffbe3490c2b83e301f7709b6736cd8f2684"
   integrity sha512-6R9fqJ5Zcmf+uYaFgdIHmLwNldn5HbK8L5ybn7Uz+ylX/rnOsSp1AHcvQSrCaFN+qNM1wpymHqD7mVasEOlHGQ==
@@ -9033,6 +9058,22 @@ node-pre-gyp@^0.13.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
+
+node-pre-gyp@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.15.0.tgz#c2fc383276b74c7ffa842925241553e8b40f1087"
+  integrity sha512-7QcZa8/fpaU/BKenjcaeFF9hLz2+7S9AqyXFhlH/rilsQ/hPZKK32RtR5EQHJElgu+q5RfbJ34KriI79UWaorA==
+  dependencies:
+    detect-libc "^1.0.2"
+    mkdirp "^0.5.3"
+    needle "^2.5.0"
+    nopt "^4.0.1"
+    npm-packlist "^1.1.6"
+    npmlog "^4.0.2"
+    rc "^1.2.7"
+    rimraf "^2.6.1"
+    semver "^5.3.0"
+    tar "^4.4.2"
 
 node-releases@^1.1.61:
   version "1.1.77"
@@ -12557,7 +12598,7 @@ tapable@^1.0.0, tapable@^1.1.3:
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"
   integrity sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==
 
-tar@^4:
+tar@^4, tar@^4.4.2:
   version "4.4.19"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.19.tgz#2e4d7263df26f2b914dee10c825ab132123742f3"
   integrity sha512-a20gEsvHnWe0ygBY8JbxoM4w3SJdhc7ZAuxkLqh+nvNQN2IOt0B5lLgM490X5Hl8FF0dl0tOf2ewFYAlIFgzVA==
