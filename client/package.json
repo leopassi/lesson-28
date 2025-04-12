@@ -43,7 +43,9 @@
     "devDependencies": {
         "react-scripts": "4.0.0"
     },
-    "resolutions": {},
+    "resolutions": {
+        "caniuse-lite": "1.0.30001632"
+    },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
