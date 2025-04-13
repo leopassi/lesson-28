@@ -21,14 +21,13 @@ import {
   OptionLink,
   WelcomeContainer,
   WelcomeMessage,
-  SwitchContainer,
-  LanguageIcon
+  SwitchContainer
 } from './header.styles';
 
-const lngs = {
-  en: { nativeName: 'English' },
-  fr: { nativeName: 'Français' }
-};
+// const lngs = {
+//   en: { nativeName: 'English' },
+//   fr: { nativeName: 'Français' }
+// };
 
 const Header = ({ currentUser, hidden, signOutStart }) => {
   const { t, i18n } = useTranslation();

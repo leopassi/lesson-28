@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
 import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 import Spinner from '../../components/spinner/spinner.component';
-import ErrorBoundary from '../../components/error-boundary/error-boundary.components';
+// import ErrorBoundary from '../../components/error-boundary/error-boundary.components';
 
 // import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
 // import CollectionPageContainer from '../collection/collection.container';

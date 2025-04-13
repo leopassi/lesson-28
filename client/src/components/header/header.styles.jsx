@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReactComponent as LanguageIconSVG } from '../../assets/language_icon.svg';
+// import { ReactComponent as LanguageIconSVG } from '../../assets/language_icon.svg';
 
 export const HeaderContainer = styled.div`
   height: 70px;
